@@ -8,11 +8,16 @@ A Next.js 14 + TypeScript + TailwindCSS starter for the OSM Expanse Card reporti
    ```bash
    npm install
    ```
-2. Run the dev server:
+2. Create an environment file based on the provided example:
+   ```bash
+   cp .env.example .env.local
+   ```
+   Then fill in your OSM OAuth credentials.
+3. Run the dev server:
    ```bash
    npm run dev
    ```
-3. Open http://localhost:3000 to view the dashboard. The mock API is available at http://localhost:3000/api/transactions.
+4. Open http://localhost:3000 to view the dashboard. The mock API is available at http://localhost:3000/api/transactions.
 
 ## Tech
 

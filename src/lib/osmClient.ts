@@ -9,6 +9,12 @@ export interface Transaction {
   createdAt: string;
 }
 
+export const osmOAuthConfig = {
+  clientId: process.env.OSM_CLIENT_ID,
+  clientSecret: process.env.OSM_CLIENT_SECRET,
+  redirectUri: process.env.OSM_REDIRECT_URI
+};
+
 const transactions: Transaction[] = [
   {
     id: 'txn_001',
