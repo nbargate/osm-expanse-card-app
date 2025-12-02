@@ -1,0 +1,34 @@
+# Multi-stage Dockerfile for Next.js 14 App Router
+FROM node:20-alpine AS deps
+WORKDIR /app
+
+# Install dependencies based on the preferred package manager
+COPY package.json ./
+RUN npm install
+
+FROM node:20-alpine AS builder
+WORKDIR /app
+
+COPY --from=deps /app/node_modules ./node_modules
+COPY . .
+RUN npm run build
+
+FROM node:20-alpine AS runner
+WORKDIR /app
+ENV NODE_ENV=production
+ENV PORT=3000
+
+# Create non-root user for running the app
+RUN addgroup -g 1001 -S nodejs \
+    && adduser -S nextjs -u 1001
+
+COPY --from=builder /app/public ./public
+COPY --from=builder /app/.next ./.next
+COPY --from=builder /app/package.json ./
+
+# Install only production dependencies
+RUN npm install --omit=dev
+
+USER nextjs
+EXPOSE 3000
+CMD ["npm", "run", "start"]
