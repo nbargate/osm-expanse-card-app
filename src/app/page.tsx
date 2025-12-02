@@ -35,6 +35,15 @@ export default async function Home() {
 
   return (
     <div className="flex flex-col gap-8">
+      <div className="flex justify-end">
+        <Link
+          href="/api/osm-auth/start"
+          className="rounded-full bg-white/10 px-4 py-2 text-sm font-semibold text-white transition hover:bg-white/20"
+        >
+          Connect to OSM
+        </Link>
+      </div>
+
       <section className="grid gap-6 md:grid-cols-3">
         <div className="rounded-2xl border border-white/10 bg-white/5 p-6 shadow-lg shadow-indigo-900/20">
           <p className="text-sm uppercase tracking-wide text-indigo-200">Total Approved</p>
