@@ -1,7 +1,7 @@
 const DEFAULT_OSM_AUTH_BASE_URL = 'https://www.onlinescoutmanager.co.uk/oauth/authorize';
 
 const baseAuthorizationUrl = process.env.OSM_AUTH_BASE_URL ?? DEFAULT_OSM_AUTH_BASE_URL;
-const scopes = process.env.OSM_SCOPE ?? 'full';
+const scopes = process.env.OSM_SCOPES ?? 'finance-section-read';
 
 export function getAuthorizationUrl(): string {
   const params = new URLSearchParams({
