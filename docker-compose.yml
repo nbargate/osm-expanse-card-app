@@ -17,14 +17,9 @@ services:
     command: tunnel --no-autoupdate run --token ${CLOUDFLARE_TUNNEL_TOKEN}
     env_file:
       - .env.local
-    environment:
-      - CLOUDFLARE_TUNNEL_TOKEN
     depends_on:
       - app
     restart: unless-stopped
-    networks:
-      - app-network
-
 networks:
   app-network:
     driver: bridge
