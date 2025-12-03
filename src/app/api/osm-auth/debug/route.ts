@@ -8,6 +8,8 @@ export async function GET() {
   const baseUrl = process.env.OSM_BASE_URL;
   const scope = process.env.OSM_SCOPE;
 
+  const allKeys = Object.keys(process.env).sort();
+
   return NextResponse.json({
     OSM_CLIENT_ID: clientId ? clientId.slice(0, 6) + "...(redacted)" : null,
     OSM_REDIRECT_URI: redirectUri ?? null,
@@ -15,8 +17,7 @@ export async function GET() {
     OSM_SCOPE: scope ?? null,
     hasClientId: !!clientId,
     hasRedirectUri: !!redirectUri,
-    osmEnvKeysPresent: Object.keys(process.env).filter((k) =>
-      k.startsWith("OSM_")
-    ),
+    osmEnvKeysPresent: allKeys.filter((k) => k.startsWith("OSM_")),
+    allEnvKeys: allKeys, // keys only, no values
   });
 }
