@@ -4,10 +4,13 @@ services:
     build: .
     ports:
       - "3000:3000"
-    env_file:
-      - .env
     environment:
       - NODE_ENV=production
+      - OSM_CLIENT_ID=REPLACE_WITH_OSM_CLIENT_ID
+      - OSM_CLIENT_SECRET=REPLACE_WITH_OSM_CLIENT_SECRET
+      - OSM_BASE_URL=https://www.onlinescoutmanager.co.uk
+      - OSM_REDIRECT_URI=https://osm.tbproductions.co.uk/api/osm-auth/callback
+      - OSM_SCOPE=finance-section-read
     command: npm run start
 
   cloudflared:
