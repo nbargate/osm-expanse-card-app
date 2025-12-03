@@ -1,3 +1,9 @@
+import {
+  OSM_CLIENT_ID,
+  OSM_CLIENT_SECRET,
+  OSM_REDIRECT_URI,
+} from '../../lib/osm/config';
+
 export type TransactionStatus = 'approved' | 'pending' | 'declined';
 
 export interface Transaction {
@@ -10,9 +16,9 @@ export interface Transaction {
 }
 
 export const osmOAuthConfig = {
-  clientId: process.env.OSM_CLIENT_ID,
-  clientSecret: process.env.OSM_CLIENT_SECRET,
-  redirectUri: process.env.OSM_REDIRECT_URI
+  clientId: OSM_CLIENT_ID,
+  clientSecret: OSM_CLIENT_SECRET,
+  redirectUri: OSM_REDIRECT_URI
 };
 
 const transactions: Transaction[] = [

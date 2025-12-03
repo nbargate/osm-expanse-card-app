@@ -1,15 +1,22 @@
 import 'server-only';
 import { promises as fs } from 'fs';
 import path from 'path';
+import {
+  OSM_BASE_URL,
+  OSM_CLIENT_ID,
+  OSM_CLIENT_SECRET,
+  OSM_REDIRECT_URI,
+  OSM_SCOPE,
+} from '../../lib/osm/config';
 
-const AUTH_URL = 'https://www.onlinescoutmanager.co.uk/oauth/authorize';
-const TOKEN_URL = 'https://www.onlinescoutmanager.co.uk/oauth/token';
-const RESOURCE_URL = 'https://www.onlinescoutmanager.co.uk/oauth/resource';
+const AUTH_URL = `${OSM_BASE_URL}/oauth/authorize`;
+const TOKEN_URL = `${OSM_BASE_URL}/oauth/token`;
+const RESOURCE_URL = `${OSM_BASE_URL}/oauth/resource`;
 
-const CLIENT_ID = process.env.OSM_CLIENT_ID!;
-const CLIENT_SECRET = process.env.OSM_CLIENT_SECRET!;
-const REDIRECT_URI = process.env.OSM_REDIRECT_URI!;
-const SCOPES = process.env.OSM_SCOPES ?? 'finance-section-read';
+const CLIENT_ID = OSM_CLIENT_ID!;
+const CLIENT_SECRET = OSM_CLIENT_SECRET!;
+const REDIRECT_URI = OSM_REDIRECT_URI!;
+const SCOPES = OSM_SCOPE;
 
 type RawOAuthResponse = {
   access_token: string;
