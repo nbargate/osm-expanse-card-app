@@ -11,3 +11,5 @@ pnpm-debug.log*
 
 # Local data store for OAuth tokens
 data
+
+lib/osm/localSecrets.ts
